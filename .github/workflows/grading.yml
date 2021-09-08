@@ -15,8 +15,6 @@ jobs:
       - name: Grade exercise-publish-package activity
         id: events
         uses: ./.github/actions/local-action
-        env:
-          NPM_TOKEN: ${{secrets.GITHUB_TOKEN}}
         with:
           event_ctx: ${{toJSON(github.event)}}
 
