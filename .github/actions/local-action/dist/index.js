@@ -716,14 +716,16 @@ module.exports = async () => {
   const { owner } = github.context.repo;
   const eventContext = core.getInput("event_ctx");
   const eventContextJSON = JSON.parse(eventContext);
-  const packageURL = eventContextJSON.package.package_version.source_url;
-  const packageName = eventContextJSON.package.name;
-  const packageVersion = eventContextJSON.package.package_version.version;
+  const packageURL =
+    eventContextJSON.registry_package.package_version.package_url;
+  const packageName = eventContextJSON.registry_package.name;
+  const packageVersion =
+    eventContextJSON.registry_package.package_version.version;
 
   try {
     let result;
 
-    switch (eventContextJSON.package.package_type) {
+    switch (eventContextJSON.registry_package.package_type) {
       case "npm":
         result = spawnSync(
           "npm",
@@ -740,7 +742,13 @@ module.exports = async () => {
         break;
       case "docker":
       case "container":
-        result = spawnSync("docker", ["pull", packageURL], {
+        // Docker has an installation command under registry_package.package_version.installation_command
+        const installationCommand =
+          eventContextJSON.registry_package.package_version
+            .installation_command;
+        const baseCommand = installationCommand.split(" ")[0];
+        const commandArgs = installationCommand.split(" ").slice(1);
+        result = spawnSync(baseCommand, commandArgs, {
           cwd: dir,
         });
       // case "maven":
@@ -755,7 +763,7 @@ module.exports = async () => {
       //   break;
       default:
         throw new Error(
-          `Unsupported package type: ${eventContextJSON.package.package_type}`
+          `Unsupported package type: ${eventContextJSON.registry_package.package_type}`
         );
     }
 

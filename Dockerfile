@@ -2,6 +2,6 @@
 
 FROM alpine:latest
 
-LABEL org.opencontainers.image.source https://github.com/OWNER/REPO
+LABEL org.opencontainers.image.source https://github.com/mattdavis0351/refactored-octo-fortnight
 
 CMD [ "echo", "hello from packages" ]

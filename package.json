@@ -1,0 +1,22 @@
+{
+  "name": "@mattdavis0351/refactored-octo-fortnight",
+  "version": "1.1.0",
+  "description": "This exercise checks your ability to publish packages to GitHub Packages. It is automatically graded via a workflow once you have completed the instructions.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mattdavis0351/refactored-octo-fortnight.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mattdavis0351/refactored-octo-fortnight/issues"
+  },
+  "homepage": "https://github.com/mattdavis0351/refactored-octo-fortnight#readme",
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com"
+  }
+}
