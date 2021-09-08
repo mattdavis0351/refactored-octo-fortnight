@@ -103,8 +103,9 @@ module.exports = async () => {
           level: "fatal",
           msg: "",
           error: {
-            expected: "",
-            got: "An internal error occurred.  Please open an issue at: https://github.com/githubtraining/exercise-publish-package and let us know!  Thank you",
+            expected:
+              "To be able to sucessfully use the package you have uploaded",
+            got: error.message,
           },
         },
       ],
