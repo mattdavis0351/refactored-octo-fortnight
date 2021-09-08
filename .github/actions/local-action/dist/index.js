@@ -731,7 +731,7 @@ module.exports = async () => {
         result = spawnSync(
           "npm",
           ["install", `@${packageNameSpace}@${packageVersion}`],
-          { cwd: dir }
+          { cwd: process.env.GITHUB_WORKSPACE }
         );
         break;
       case "rubygems":
