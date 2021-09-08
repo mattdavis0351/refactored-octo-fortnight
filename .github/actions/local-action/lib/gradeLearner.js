@@ -11,6 +11,7 @@ module.exports = async () => {
   const packageName = eventContextJSON.registry_package.name;
   const packageVersion =
     eventContextJSON.registry_package.package_version.version;
+  const packageNameSpace = eventContextJSON.registry_package.namespace;
 
   try {
     let result;
@@ -19,7 +20,7 @@ module.exports = async () => {
       case "npm":
         result = spawnSync(
           "npm",
-          ["install", `${owner}/${packageName}@${packageVersion}`],
+          ["install", `@${packageNameSpace}@${packageVersion}`],
           { cwd: dir }
         );
         break;
