@@ -726,7 +726,7 @@ module.exports = async () => {
   try {
     let result;
 
-    switch (eventContextJSON.registry_package.package_type) {
+    switch (eventContextJSON.registry_package.package_type.toLowerCase()) {
       case "npm":
         result = spawnSync(
           "npm",
