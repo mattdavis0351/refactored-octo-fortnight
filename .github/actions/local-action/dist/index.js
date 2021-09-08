@@ -752,16 +752,16 @@ module.exports = async () => {
         result = spawnSync(baseCommand, commandArgs, {
           cwd: process.env.GITHUB_WORKSPACE,
         });
-      // case "maven":
-      //   result = spawnSync("some",["maven","magic"]);
-      //   break;
-      // case "nuget":
-      //   result = spawnSync(
-      //     "dotnet",
-      //     ["add", "package", `${packageName}`, `-s ${packageURL}`],
-      //     { cwd: dir }
-      //   );
-      //   break;
+        // case "maven":
+        //   result = spawnSync("some",["maven","magic"]);
+        //   break;
+        // case "nuget":
+        //   result = spawnSync(
+        //     "dotnet",
+        //     ["add", "package", `${packageName}`, `-s ${packageURL}`],
+        //     { cwd: dir }
+        //   );
+        break;
       default:
         throw new Error(
           `Unsupported package type: ${eventContextJSON.registry_package.package_type}`
