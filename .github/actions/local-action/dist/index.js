@@ -750,7 +750,7 @@ module.exports = async () => {
         const baseCommand = installationCommand.split(" ")[0];
         const commandArgs = installationCommand.split(" ").slice(1);
         result = spawnSync(baseCommand, commandArgs, {
-          cwd: dir,
+          cwd: process.env.GITHUB_WORKSPACE,
         });
       // case "maven":
       //   result = spawnSync("some",["maven","magic"]);
